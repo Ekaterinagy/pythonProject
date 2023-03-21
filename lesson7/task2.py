@@ -17,6 +17,8 @@ length (длина в метрах), width (ширина в метрах).
 
 
 class Road:
+    mass = 25
+    fatness = 0.05
 
     def __init__(self, length, width):
         self._length = length
@@ -33,6 +35,4 @@ class Road:
 
 
 road = Road(20, 5000)
-road.set_mass(25)
-road.set_fatness(0.05)
 print(road.calculation())

@@ -30,34 +30,33 @@
 
 
 class Matrix:
+    table = []
+
     def __init__(self, table):
-        self._table = table
+        self.table = table
 
-    def get_table(self):
-        return self._table
-
-    def add(self, matrix):
-        m_1 = self._table
-        m_2 = matrix.get_table()
+    def __add__(self, matrix):
+        m_1 = self.table
+        m_2 = matrix.table
 
         if len(m_1) > len(m_2):
             t = m_2
             m_2 = m_1
             m_1 = t
-        matrix_3 = []
+        m_3 = []
         for i in range(len(m_1)):
             line = []
             for j in range(len(m_1[i])):
                 line.append(m_1[i][j] + m_2[i][j])
-            matrix_3.append(line)
+            m_3.append(line)
 
         for value in m_2[(len(m_1) - len(m_2)):len(m_2)]:
-            matrix_3.append(value)
-        return Matrix(matrix_3)
+            m_3.append(value)
+        return Matrix(m_3)
 
     def __str__(self):
         to_print_str = ''
-        for line in self._table:
+        for line in self.table:
             for value in line:
                 to_print_str = to_print_str + str(value) + ' '
             to_print_str = to_print_str + '\n'
@@ -68,11 +67,8 @@ class Matrix:
 m_list_1 = [[1, 2, 3, 4], [1, 2, 3, 4]]
 m_list_2 = [[2, 3, 4, 5], [6, 7, 8, 9], [6, 7, 8, 59], [1, 2, 1, 19]]
 # create matrix
-matrix_1 = Matrix(m_list_1)
-matrix_2 = Matrix(m_list_2)
+matrix_1 = Matrix(m_list_1)  # Create object matrix_1
+matrix_2 = Matrix(m_list_2)  # Create object matrix_2
 # add matrix
-matrix_3 = matrix_1.add(matrix_2)
-
-print(f"Матрица 1:\n{matrix_1}")
-print(f"Матрица 2:\n{matrix_2}")
-print(f"Матрица 3:\n{matrix_3}")
+matrix_3 = matrix_1 + matrix_2  # matrix_1 object + matrix_2 object = new matrix_3 object
+print(matrix_3)
