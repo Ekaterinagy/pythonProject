@@ -20,11 +20,10 @@ import time
 
 
 class TrafficLight:
-    def __init__(self):
-        self.__color = {"красный": 7, "желтый": 2, "зеленый": 7}
+    color = {"красный": 7, "желтый": 2, "зеленый": 7}
 
     def running(self):
-        for key, value in self.__color.items():
+        for key, value in self.color.items():
             print(key)
             time.sleep(value)
 
